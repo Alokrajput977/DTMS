@@ -1,92 +1,85 @@
-/* Sidebar Styles */
-.custom-sidebar {
-  width: 250px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background-color: #343a40;
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.custom-sidebar.closed {
-  width: 80px;
-}
-
-.sidebar-header {
-  padding: 20px 0;
-}
-
-.sidebar-logo {
-  width: 100%;
-  max-width: 150px;
+/* Font (optional but recommended) */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f7f9fc;
 }
 
 
-.sidebar-link {
-  color: white;
+/* Modern Card Style */
+.modern-dashboard-card {
+  background: #ffffff;
+  border: none;
+  border-radius: 18px;
+  padding: 1.8rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+  position: relative;
 }
 
-.sidebar-link:hover {
-  background-color: #495057;
+.modern-dashboard-card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.sidebar-heading {
-  font-size: 1.2rem;
-  padding-left: 10px;
+.modern-dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
 }
 
-/* Card Styles */
-.card-custom {
-
-  color: white;
-  transition: all 0.3s ease;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+/* Icon Section */
+.modern-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7b2ff7, #00d4ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
-.card-custom:hover {
-  transform: translateY(-10px);
-}
-
-.card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #f5f5f5;
-  margin-bottom: 10px;
-}
-
-.card-value {
-  font-size: 2.5rem;
-  font-weight: bold;
+.modern-icon {
   color: #fff;
-  margin: 15px 0;
 }
 
-.card-footer {
-  background-color: transparent;
-  border-top: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
+/* Title */
+.modern-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1c1e21;
+  margin-bottom: 0.3rem;
 }
 
-/* Icon Styles */
-.icon-container {
-  text-align: center;
-  margin-bottom: 15px;
+/* Subtext */
+.modern-subtext {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 1.2rem;
 }
 
-.card-icon {
-  color: #fff;
-  background: #555;
-  padding: 15px;
-  border-radius: 50%;
+/* Value */
+.modern-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #7b2ff7, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
-  .main-content {
+  .modern-dashboard-card {
     margin-left: 0 !important;
+    padding: 1.2rem;
+  }
+
+  .modern-title {
+    font-size: 1rem;
+  }
+
+  .modern-value {
+    font-size: 1.8rem;
   }
 }

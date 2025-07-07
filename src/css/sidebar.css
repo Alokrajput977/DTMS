@@ -1,5 +1,4 @@
-/* src/css/sidebar.css */
-
+/* Sidebar Container */
 .custom-sidebar {
   width: 250px;
   height: 100vh;
@@ -19,36 +18,68 @@
   width: 80px;
 }
 
-/* ✅ Increased logo size */
+/* Sidebar Logo */
 .sidebar-logo {
   width: 200px;
   height: 80px;
   object-fit: contain;
   border-radius: 12px;
+  margin: auto;
+  display: block;
   transition: all 0.3s ease;
 }
 
+.custom-sidebar.closed .sidebar-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Sidebar Title */
 .sidebar-title {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 600;
   margin-top: 0.5rem;
+  text-align: center;
   transition: opacity 0.3s ease;
 }
 
+.custom-sidebar.closed .sidebar-title {
+  opacity: 0;
+}
+
+/* Navigation Links */
 .sidebar-link {
   color: #adb5bd;
   transition: all 0.3s ease;
   font-size: 0.95rem;
+  padding: 0.6rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  text-decoration: none;
 }
 
 .sidebar-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.08);
   color: #ffffff !important;
 }
 
 .sidebar-link.active {
   background-color: #0d6efd;
   color: #fff !important;
+}
+
+/* Label (text) beside icons */
+.sidebar-heading {
+  font-size: 1rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.custom-sidebar.closed .sidebar-heading {
+  opacity: 0;
+  transform: translateX(-10px);
 }
 
 .sidebar-toggle-center {
@@ -71,7 +102,38 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   font-size: 1.4rem;
 }
-
 .custom-sidebar.closed + .sidebar-toggle-center {
   left: 80px;
 }
+
+/* Transition animation class for cards */
+.card-custom {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card-custom.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+  .custom-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .custom-sidebar.closed {
+    width: 100%;
+  }
+
+  .sidebar-toggle-center {
+    left: unset;
+    right: 20px;
+    top: 20px;
+  }
+}
+

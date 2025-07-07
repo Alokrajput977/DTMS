@@ -1,51 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
-import { FaTruckLoading, FaClock, FaChartBar, FaBoxes, FaShippingFast, FaTruck, FaWarehouse, FaArrowDown, FaArrowUp, FaCalendarAlt } from 'react-icons/fa';
-import '../css/TransactionOverview.css'; // Ensure this CSS is applied
+import { 
+  FaBoxes, 
+  FaShippingFast, 
+  FaTruck, 
+  FaWarehouse,
+  FaArrowDown,
+  FaArrowUp,
+  FaCalendarAlt
+} from 'react-icons/fa';
+import '../css/TransactionOverview.css';
 
-const iconMap = {
-  FaTruckLoading: <FaTruckLoading size={28} className="modern-icon" />,
-  FaClock: <FaClock size={28} className="modern-icon" />,
-  FaChartBar: <FaChartBar size={28} className="modern-icon" />,
-};
-
-const Dashboard = () => {
+const TransactionOverview = ({ isSidebarOpen }) => {
   const [showCards, setShowCards] = useState(false);
-  const [showTransactionOverview, setShowTransactionOverview] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowCards(true), 400);
-    const timerOverview = setTimeout(() => setShowTransactionOverview(true), 800);
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(timerOverview);
-    };
-  }, []);
-
-  const cardClass = `modern-dashboard-card ${showCards ? 'show' : ''}`;
-  const transactionCardClass = `modern-dashboard-card ${showTransactionOverview ? 'show' : ''}`;
-
-  const cardData = [
-    {
-      icon: 'FaTruckLoading',
-      title: 'Gate Dashboard Entries',
-      subtext: 'Since 2025-07-06 00:00:00 to 23:59:59',
-      value: '482',
-    },
-    {
-      icon: 'FaClock',
-      title: 'Avg. Turnaround Time',
-      subtext: 'Since 2025-07-06 00:00:00 to 23:59:59',
-      value: '92 Minutes',
-    },
-    {
-      icon: 'FaChartBar',
-      title: 'Weekly Overview',
-      subtext: 'From 01-07-2025 to 07-07-2025',
-      value: '7,720',
-    },
-  ];
-
+  // Sample transaction data
   const transactionData = {
     date: '06/07/2025',
     range: 'Since 2025-07-06 00:00:00 to 23:59:59',
@@ -65,28 +34,16 @@ const Dashboard = () => {
     },
   };
 
-  return (
-    <div className="container-fluid p-4" style={{  marginTop: '20px' }}>
-      {/* Dashboard Cards */}
-      <Row className="g-4 px-3 pt-4">
-        {cardData.map((card, idx) => (
-          <Col md={4} key={idx}>
-            <Card className={cardClass}>
-              <Card.Body>
-                <div className="modern-icon-wrapper">
-                  {iconMap[card.icon]}
-                </div>
-                <div className="modern-title">{card.title}</div>
-                <div className="modern-subtext">{card.subtext}</div>
-                <div className="modern-value">{card.value}</div>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+  useEffect(() => {
+    const timer = setTimeout(() => setShowCards(true), 400);
+    return () => clearTimeout(timer);
+  }, [isSidebarOpen]);
 
-      {/* Transaction Overview Section */}
-      <Card className={`mt-4 ${transactionCardClass}`}>
+  const cardClass = `modern-dashboard-card ${showCards ? 'show' : ''}`;
+
+  return (
+    <div className="px-3 pt-4">
+      <Card className={`mt-4 ${cardClass}`}>
         <Card.Body className="p-4">
           <Row className="align-items-center mb-3">
             <Col md={8}>
@@ -211,10 +168,8 @@ const Dashboard = () => {
           </Row>
         </Card.Body>
       </Card>
-      
-     
     </div>
   );
 };
 
-export default Dashboard;
+export default TransactionOverview;

@@ -1,54 +1,45 @@
-import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
-import { FaTruck, FaBox, FaDatabase } from 'react-icons/fa'; // Icons
+import React, { useEffect, useState } from 'react';
+import { Row, Col, Card } from 'react-bootstrap';
+import { FaTruckLoading, FaClock, FaChartBar } from 'react-icons/fa';
 
-const Cards = () => {
+const iconMap = {
+  FaTruckLoading: <FaTruckLoading size={28} className="modern-icon" />,
+  FaClock: <FaClock size={28} className="modern-icon" />,
+  FaChartBar: <FaChartBar size={28} className="modern-icon" />,
+};
+
+const Cards = ({ isSidebarOpen, cardData }) => {
+  const [showCards, setShowCards] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowCards(true), 400);
+    return () => clearTimeout(timer);
+  }, [isSidebarOpen]);
+
+  const cardClass = `modern-dashboard-card ${showCards ? 'show' : ''}`;
+
   return (
-    <Row className="g-4">
-      <Col md={4}>
-        <Card className="shadow border-0 rounded card-custom">
-          <Card.Body>
-            <div className="icon-container">
-              <FaTruck size={50} className="card-icon" />
-            </div>
-            <Card.Title className="card-title">EXIM IN (TOTAL)</Card.Title>
-            <Card.Text className="card-value">231</Card.Text>
-            <Card.Footer className="card-footer">
-              <small>Since 2025-07-06</small>
-            </Card.Footer>
-          </Card.Body>
-        </Card>
-      </Col>
-      
-      <Col md={4}>
-        <Card className="shadow border-0 rounded card-custom">
-          <Card.Body>
-            <div className="icon-container">
-              <FaBox size={50} className="card-icon" />
-            </div>
-            <Card.Title className="card-title">EXIM OUT (TOTAL)</Card.Title>
-            <Card.Text className="card-value">251</Card.Text>
-            <Card.Footer className="card-footer">
-              <small>Since 2025-07-06</small>
-            </Card.Footer>
-          </Card.Body>
-        </Card>
-      </Col>
-      
-      <Col md={4}>
-        <Card className="shadow border-0 rounded card-custom">
-          <Card.Body>
-            <div className="icon-container">
-              <FaDatabase size={50} className="card-icon" />
-            </div>
-            <Card.Title className="card-title">Average Truck Turnaround Time</Card.Title>
-            <Card.Text className="card-value">92 Minutes</Card.Text>
-            <Card.Footer className="card-footer">
-              <small>Since 2025-07-06</small>
-            </Card.Footer>
-          </Card.Body>
-        </Card>
-      </Col>
+    <Row
+      className="g-4 px-3 pt-4"
+      style={{
+        marginLeft: isSidebarOpen ? '10px' : '6px',
+        transition: 'margin-left 0.5s ease',
+      }}
+    >
+      {cardData.map((card, idx) => (
+        <Col md={4} key={idx}>
+          <Card className={cardClass}>
+            <Card.Body>
+              <div className="modern-icon-wrapper">
+                {iconMap[card.icon]}
+              </div>
+              <div className="modern-title">{card.title}</div>
+              <div className="modern-subtext">{card.subtext}</div>
+              <div className="modern-value">{card.value}</div>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
     </Row>
   );
 };
