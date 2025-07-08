@@ -749,3 +749,571 @@
 }
 
 
+/* TransactionOverview.css */
+
+/* Base Styles */
+.dashboard-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+/* Animation Classes */
+.card-col .card-item,
+.transaction-overview,
+.teu-card,
+.WeeklyOverviewCard,
+.graph-section,
+.recent-transactions-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card-col .card-item.show,
+.transaction-overview.show,
+.teu-card.show,
+.WeeklyOverviewCard.show,
+.graph-section.show,
+.recent-transactions-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dashboard Cards */
+.cards-section .card-item {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  background: white;
+}
+
+.cards-section .card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.modern-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+}
+
+.modern-icon-wrapper .modern-icon {
+  color: white;
+}
+
+.modern-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.modern-subtext {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.modern-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+/* Transaction Overview */
+.transaction-overview {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  background: white;
+}
+
+.transaction-header {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stats-card {
+  border-radius: 10px;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.in-card {
+  background-color: rgba(67, 97, 238, 0.05);
+  border: 1px solid rgba(67, 97, 238, 0.15);
+}
+
+.out-card {
+  background-color: rgba(220, 53, 69, 0.05);
+  border: 1px solid rgba(220, 53, 69, 0.15);
+}
+
+.stats-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.stats-header h5 {
+  margin: 0;
+}
+
+.stats-header .total-badge {
+  background-color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.in-card .total-badge {
+  color: #4361ee;
+}
+
+.out-card .total-badge {
+  color: #dc3545;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.stat-item {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-3px);
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.bg-purple {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+}
+
+.bg-teal {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.bg-blue {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+.bg-orange {
+  background: linear-gradient(135deg, #f46b45 0%, #eea849 100%);
+}
+
+.stat-info small {
+  font-size: 0.75rem;
+  color: #6c757d;
+  display: block;
+}
+
+.stat-info h6 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.25rem 0 0;
+  color: #212529;
+}
+
+/* TEU Cards */
+.teu-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  background: white;
+}
+
+.teu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.teu-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.teu-badge {
+  background-color: #f8f9fa;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.teu-subtitle {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.teu-stats-row {
+  margin-top: 1rem;
+}
+
+.teu-stat-card {
+  border-radius: 10px;
+  padding: 1.25rem;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.teu-stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.teu-stat-card.in {
+  background-color: rgba(67, 97, 238, 0.05);
+  border: 1px solid rgba(67, 97, 238, 0.15);
+}
+
+.teu-stat-card.out {
+  background-color: rgba(220, 53, 69, 0.05);
+  border: 1px solid rgba(220, 53, 69, 0.15);
+}
+
+.teu-stat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.teu-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.teu-change {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+.teu-change.positive {
+  color: #28a745;
+}
+
+.teu-change.negative {
+  color: #dc3545;
+}
+
+/* Weekly Overview */
+.WeeklyOverviewCard {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  background: white;
+}
+
+.dashboard-header h2 {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.date-range {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.icon-bg {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bg-primary-light {
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.bg-success-light {
+  background-color: rgba(40, 167, 69, 0.1);
+}
+
+.bg-warning-light {
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.bg-info-light {
+  background-color: rgba(23, 162, 184, 0.1);
+}
+
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.display-8 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.progress {
+  border-radius: 4px;
+  background-color: #e9ecef;
+}
+
+.progress-bar {
+  border-radius: 4px;
+}
+
+/* Recent Transactions */
+.RecentTransactionsCard {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  background: white;
+}
+
+.RecentTransactionsCard .card-header {
+  border-radius: 12px 12px 0 0 !important;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.RecentTransactionsCard .card-header h5 {
+  font-weight: 500;
+}
+
+.RecentTransactionsCard .table {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.RecentTransactionsCard th {
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #495057;
+  border-top: none;
+  background-color: #f8f9fa;
+  padding: 0.75rem 1rem;
+}
+
+.RecentTransactionsCard td {
+  font-size: 0.9rem;
+  vertical-align: middle;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #f1f1f1;
+}
+
+.RecentTransactionsCard tr:hover td {
+  background-color: rgba(67, 97, 238, 0.03);
+}
+
+.table-responsive {
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+/* Charts Section */
+.graph-section .card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  background: white;
+}
+
+.graph-section .card-header {
+  border-radius: 12px 12px 0 0 !important;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+  color: white;
+}
+
+.graph-section .card-header h5 {
+  font-weight: 500;
+  margin: 0;
+}
+
+.graph-section .card-body {
+  padding: 1.5rem;
+}
+
+/* Chart.js Overrides */
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .teu-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .teu-badge {
+    margin-top: 0.5rem;
+  }
+  
+  .dashboard-header .d-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .dashboard-header .date-range {
+    margin-top: 0.5rem;
+  }
+  
+  .cards-section .card-col {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Badges */
+.badge {
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+}
+
+/* Text Colors */
+.text-primary {
+  color: #4361ee !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-info {
+  color: #17a2b8 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+/* Background Colors */
+.bg-primary {
+  background-color: #4361ee !important;
+}
+
+.bg-success {
+  background-color: #28a745 !important;
+}
+
+.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.bg-info {
+  background-color: #17a2b8 !important;
+}
+
+.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+/* Border Colors */
+.border-primary {
+  border-color: #4361ee !important;
+}
+
+.border-success {
+  border-color: #28a745 !important;
+}
+
+.border-warning {
+  border-color: #ffc107 !important;
+}
+
+.border-info {
+  border-color: #17a2b8 !important;
+}
+
+.border-danger {
+  border-color: #dc3545 !important;
+}

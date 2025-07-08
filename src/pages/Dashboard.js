@@ -400,7 +400,7 @@ const Dashboard = () => {
                     <GiCargoShip className="text-info" size={24} />
                   </div>
                 </div>
-                <h2 className="display-8 fw-light mb-0">{weeklyData.eximOutContainer.toLocaleString()}</h2>
+                <h2 className="bg-${color}  display-8 fw-light mb-0">{weeklyData.eximOutContainer.toLocaleString()}</h2>
                 <div className="progress mt-3" style={{ height: '8px' }}>
                   <div
                     className="progress-bar bg-info"
@@ -420,40 +420,52 @@ const Dashboard = () => {
   );
 
   const RecentTransactionsCard = ({ transactions, title, icon, color }) => (
-    <Card className={`mb-4 ${showRecentTransactions ? 'show' : ''}`}>
-      <Card.Header className={`bg-${color} text-white` }>
-        <div className="d-flex align-items-center">
-          {icon}
-          <h5 className="mb-0 ms-2">{title}</h5>
-        </div>
-      </Card.Header>
-      <Card.Body>
-        <div className="table-responsive">
-          <Table striped hover className="mb-0">
-            <thead>
-              <tr>
-                <th className='fw-light'>SN.</th>
-                <th className='fw-light'>VEHICLE NO.</th>
-                <th className='fw-light'>CONTAINER/CRM NO.</th>
-                <th className='fw-light'>TIME</th>
-                <th className='fw-light'>GATE</th>
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map((txn, index) => (
-                <tr key={txn.id}>
-                  <td>{index + 1}</td>
-                  <td>{txn.vehicleNo}</td>
-                  <td>{txn.containerNo}</td>
-                  <td>{txn.time}</td>
-                  <td>{txn.gate}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-      </Card.Body>
-    </Card>
+    <Card className={`mb-4 shadow-sm ${showRecentTransactions ? 'show' : ''}`} style={{ border: 'none', borderRadius: '10px' }}>
+  <Card.Header className="bg-primary text-white" style={{ borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
+    <div className="d-flex align-items-center">
+      {icon}
+      <h5 className="mb-0 ms-2 fw-semibold">{title}</h5>
+      <span className="badge bg-light text-primary ms-auto">{transactions.length} entries</span>
+    </div>
+  </Card.Header>
+  <Card.Body className="p-0">
+    <div className="table-responsive">
+      <Table hover className="mb-0" style={{ minWidth: '600px' }}>
+        <thead className="bg-light">
+          <tr>
+            <th style={{ width: '60px' }} className='fw-semibold text-secondary'>SN.</th>
+            <th className='fw-semibold text-secondary'>VEHICLE NO.</th>
+            <th className='fw-semibold text-secondary'>CONTAINER/CRM NO.</th>
+            <th className='fw-semibold text-secondary'>TIME</th>
+            <th className='fw-semibold text-secondary'>GATE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {transactions.map((txn, index) => (
+            <tr key={txn.id} className={index % 2 === 0 ? '' : 'bg-light'}>
+              <td className="text-muted">{index + 1}</td>
+              <td>
+                <span className="fw-medium">{txn.vehicleNo}</span>
+              </td>
+              <td>
+                <span className="badge bg-info bg-opacity-10 text-info">{txn.containerNo}</span>
+              </td>
+              <td className="text-muted">
+                <i className="bi bi-clock me-1"></i> {txn.time}
+              </td>
+              <td>
+                <span className="badge bg-success bg-opacity-10 text-success">{txn.gate}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </div>
+  </Card.Body>
+  <Card.Footer className="bg-light text-muted small" style={{ borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
+    Last updated: {new Date().toLocaleString()}
+  </Card.Footer>
+</Card>
   );
 
   return (
