@@ -1,0 +1,149 @@
+/* TEU Overview Styles */
+.teu-overview-container {
+  padding: 20px;
+}
+
+.teu-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+  overflow: hidden;
+  background: white;
+}
+
+.teu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.teu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.teu-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2b2d42;
+  display: flex;
+  align-items: center;
+}
+
+.teu-title svg {
+  color: #4361ee;
+}
+
+.teu-badge {
+  background: #f8f9fa;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6c757d;
+}
+
+.teu-subtitle {
+  font-size: 0.85rem;
+  color: #8d99ae;
+  margin-bottom: 1.5rem;
+}
+
+.teu-stats-row {
+  margin-top: 1rem;
+}
+
+.teu-stat-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.teu-stat-card.in {
+  background: rgba(67, 97, 238, 0.05);
+  border-left: 4px solid #4361ee;
+}
+
+.teu-stat-card.out {
+  background: rgba(247, 37, 133, 0.05);
+  border-left: 4px solid #f72585;
+}
+
+.teu-stat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2b2d42;
+}
+
+.teu-stat-card.in .teu-stat-header svg {
+  color: #4361ee;
+}
+
+.teu-stat-card.out .teu-stat-header svg {
+  color: #f72585;
+}
+
+.teu-stat-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2b2d42;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1;
+}
+
+.teu-change {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.teu-change.positive {
+  color: #06d6a0;
+}
+
+.teu-change.negative {
+  color: #ef476f;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .teu-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .teu-badge {
+    margin-top: 0.5rem;
+  }
+  
+  .teu-stat-value {
+    font-size: 1.8rem;
+  }
+  
+  .teu-change {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .teu-stat-card {
+    padding: 1.2rem;
+  }
+  
+  .teu-stat-value {
+    font-size: 1.5rem;
+  }
+}
+
