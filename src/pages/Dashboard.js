@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
-import { FaTruckLoading, FaClock, FaChartBar, FaBoxes, FaShippingFast, FaTruck, FaWarehouse, FaArrowDown, FaArrowUp, FaCalendarAlt, FaChartLine } from 'react-icons/fa';
-import '../css/TransactionOverview.css'; // Ensure this CSS is applied
+import {
+  FaTruckLoading, FaClock, FaChartBar, FaBoxes,
+  FaShippingFast, FaTruck, FaWarehouse,
+  FaArrowDown, FaArrowUp, FaCalendarAlt,
+  FaChartLine, FaSortAmountDown
+} from 'react-icons/fa';
+import { GiCargoShip } from 'react-icons/gi';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import '../css/TransactionOverview.css';
 
 const iconMap = {
   FaTruckLoading: <FaTruckLoading size={28} className="modern-icon" />,
@@ -13,18 +21,20 @@ const Dashboard = () => {
   const [showCards, setShowCards] = useState(false);
   const [showTransactionOverview, setShowTransactionOverview] = useState(false);
   const [showTeuOverview, setShowTeuOverview] = useState(false);
+  const [showWeeklyOverview, setShowWeeklyOverview] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowCards(true), 200);
     const timerOverview = setTimeout(() => setShowTransactionOverview(true), 400);
     const timerTeu = setTimeout(() => setShowTeuOverview(true), 600);
+    const timerWeekly = setTimeout(() => setShowWeeklyOverview(true), 800);
     return () => {
       clearTimeout(timer);
       clearTimeout(timerOverview);
       clearTimeout(timerTeu);
+      clearTimeout(timerWeekly);
     };
-  }, []);
-
+  }, []); 
 
   const cardData = [
     {
@@ -85,6 +95,14 @@ const Dashboard = () => {
     }
   };
 
+  const weeklyData = {
+    eximInTrucks: 2837,
+    eximInContainer: 849,
+    eximOutTrucks: 2192,
+    eximOutContainer: 1201,
+    dateRange: 'Since 02-07-2025 00:00:00 to 08-07-2025 00:00:00'
+  };
+
   const TeuCard = ({ title, icon, date, range, eximIn, eximOut, eximInChange, eximOutChange, isWeekly = false }) => (
     <Card className={`teu-card ${showTeuOverview ? 'show' : ''}`}>
       <Card.Body>
@@ -97,9 +115,9 @@ const Dashboard = () => {
             {date}
           </div>
         </div>
-        
+
         <p className="teu-subtitle">{range}</p>
-        
+
         <Row className="teu-stats-row">
           <Col md={6} className="mb-4">
             <div className="teu-stat-card in">
@@ -115,7 +133,7 @@ const Dashboard = () => {
               </div>
             </div>
           </Col>
-          
+
           <Col md={6} className="mb-4">
             <div className="teu-stat-card out">
               <div className="teu-stat-header">
@@ -134,6 +152,180 @@ const Dashboard = () => {
       </Card.Body>
     </Card>
   );
+
+  const WeeklyOverviewCard = () => {
+    const [startDate, setStartDate] = useState(new Date('2025-07-02'));
+    const [endDate, setEndDate] = useState(new Date('2025-07-08'));
+    const [showDatePicker, setShowDatePicker] = useState(false);
+
+    const handleDateChange = (dates) => {
+      const [start, end] = dates;
+      setStartDate(start);
+      setEndDate(end);
+    };
+
+    const formatDate = (date) => {
+      return date ? date.toLocaleDateString('en-GB') : '';
+    };
+
+    return (
+      <Card className={`mt-4 ${showWeeklyOverview ? 'show' : ''}`}>
+        <Card.Body className="p-4">
+          <div className="dashboard-header mb-4">
+            <div className="d-flex justify-content-between align-items-center">
+              <h2 className="fw-bold text-primary">
+                <FaTruck className="me-2" />
+                Last 7 Days Transactions Overview
+              </h2>
+              <div className="d-flex align-items-center position-relative">
+                <span className="me-3 text-muted">
+                  <FaSortAmountDown className="me-1" />
+                  Sort by Weekly
+                </span>
+
+                <div
+                  className="date-range bg-light p-2 rounded d-flex align-items-center"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setShowDatePicker(!showDatePicker)}
+                >
+                  <FaCalendarAlt className="me-2 text-secondary" />
+                  <span>
+                    {`Since ${formatDate(startDate)} 00:00:00 to ${formatDate(endDate)} 00:00:00`}
+                  </span>
+                </div>
+
+                {showDatePicker && (
+                  <div className="position-absolute" style={{ top: '100%', right: 0, zIndex: 1000 }}>
+                    <DatePicker
+                      selectsRange
+                      startDate={startDate}
+                      endDate={endDate}
+                      onChange={handleDateChange}
+                      shouldCloseOnSelect={false}
+                      inline
+                      monthsShown={2}
+                      minDate={new Date('2025-01-01')}
+                      maxDate={new Date('2025-12-31')}
+                    />
+                    <div className="text-end p-2 bg-white border-top">
+                      <button
+                        className="btn btn-sm btn-primary"
+                        onClick={() => setShowDatePicker(false)}
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            {/* EXIM IN TRUCKS */}
+            <div className="col-md-6 col-lg-3 mb-4">
+              <div className="card border-primary h-100">
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <h5 className="card-title text-primary">EXIM IN TRUCKS</h5>
+                    <div className="icon-bg bg-primary-light">
+                      <FaTruck className="text-primary" size={24} />
+                    </div>
+                  </div>
+                  <h2 className="display-8 fw-light mb-0">{weeklyData.eximInTrucks.toLocaleString()}</h2>
+                  <div className="progress mt-3" style={{ height: '8px' }}>
+                    <div
+                      className="progress-bar bg-primary"
+                      role="progressbar"
+                      style={{ width: '75%' }}
+                      aria-valuenow="75"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* EXIM IN CONTAINER */}
+            <div className="col-md-6 col-lg-3 mb-4">
+              <div className="card border-success h-100">
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <h5 className="card-title text-success">EXIM IN CONTAINER</h5>
+                    <div className="icon-bg bg-success-light">
+                      <GiCargoShip className="text-success" size={24} />
+                    </div>
+                  </div>
+                  <h2 className="display-8 fw-light mb-0">{weeklyData.eximInContainer.toLocaleString()}</h2>
+                  <div className="progress mt-3" style={{ height: '8px' }}>
+                    <div
+                      className="progress-bar bg-success"
+                      role="progressbar"
+                      style={{ width: '25%' }}
+                      aria-valuenow="25"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* EXIM OUT TRUCKS */}
+            <div className="col-md-6 col-lg-3 mb-4">
+              <div className="card border-warning h-100">
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <h5 className="card-title text-warning">EXIM OUT TRUCKS</h5>
+                    <div className="icon-bg bg-warning-light">
+                      <FaShippingFast className="text-warning" size={24} />
+                    </div>
+                  </div>
+                  <h2 className="display-8 fw-light  mb-0">{weeklyData.eximOutTrucks.toLocaleString()}</h2>
+                  <div className="progress mt-3" style={{ height: '8px' }}>
+                    <div
+                      className="progress-bar bg-warning"
+                      role="progressbar"
+                      style={{ width: '60%' }}
+                      aria-valuenow="60"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* EXIM OUT CONTAINER */}
+            <div className="col-md-6 col-lg-3 mb-4">
+              <div className="card border-info h-100">
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <h5 className="card-title text-info">EXIM OUT CONTAINER</h5>
+                    <div className="icon-bg bg-info-light">
+                      <GiCargoShip className="text-info" size={24} />
+                    </div>
+                  </div>
+                  <h2 className="display-8 fw-light mb-0">{weeklyData.eximOutContainer.toLocaleString()}</h2>
+                  <div className="progress mt-3" style={{ height: '8px' }}>
+                    <div
+                      className="progress-bar bg-info"
+                      role="progressbar"
+                      style={{ width: '35%' }}
+                      aria-valuenow="35"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Card.Body>
+      </Card>
+    );
+  };
 
   return (
     <div className="container-fluid p-4 dashboard-container">
@@ -310,6 +502,9 @@ const Dashboard = () => {
           />
         </Col>
       </Row>
+
+      {/* Weekly Overview Section */}
+      <WeeklyOverviewCard />
     </div>
   );
 };

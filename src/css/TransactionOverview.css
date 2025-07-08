@@ -75,10 +75,12 @@
 
 .in-card .total-badge {
   color: #4e54c8;
+  background-color: white;
 }
 
 .out-card .total-badge {
   color: #dc3545;
+  background-color: white;
 }
 
 /* Stats Grid */
@@ -412,4 +414,283 @@
 
 .teu-change.negative {
   color: #e74c3c;
+}
+
+/* Base Styles */
+.dashboard-container {
+  background-color: #f8f9fa;
+}
+
+/* Card Animation */
+.card-item, .transaction-overview, .teu-card, .weekly-overview-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.card-item.show, .transaction-overview.show, 
+.teu-card.show, .weekly-overview-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dashboard Cards */
+.card-item {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.modern-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.modern-icon {
+  color: #0d6efd;
+}
+
+.modern-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.modern-subtext {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+.modern-value {
+  font-size: 1rem;
+  font-weight: 700;
+  
+}
+
+/* Transaction Overview */
+.transaction-overview {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.transaction-header {
+  display: flex;
+  align-items: center;
+  color: #2c3e50;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #0d6efd, #6610f2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stats-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  height: 100%;
+}
+
+.stats-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.stats-header h5 {
+  margin: 0;
+}
+
+.total-badge {
+  background-color: #f8f9fa;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  color: white;
+}
+
+.stat-info small {
+  display: block;
+  font-size: 0.7rem;
+  color: #6c757d;
+  margin-bottom: 2px;
+}
+
+.stat-info h6 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.bg-purple { background-color: #6f42c1; }
+.bg-teal { background-color: #20c997; }
+.bg-blue { background-color: #0d6efd; }
+.bg-orange { background-color: #fd7e14; }
+
+/* TEU Cards */
+.teu-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.teu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.teu-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.teu-badge {
+  background-color: #f8f9fa;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.teu-subtitle {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.teu-stat-card {
+  padding: 15px;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.teu-stat-card.in {
+  background-color: rgba(13, 110, 253, 0.05);
+  border-left: 4px solid #0d6efd;
+}
+
+.teu-stat-card.out {
+  background-color: rgba(25, 135, 84, 0.05);
+  border-left: 4px solid #198754;
+}
+
+.teu-stat-header {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.teu-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.teu-change {
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.teu-change.positive {
+  color: #198754;
+}
+
+.teu-change.negative {
+  color: #dc3545;
+}
+
+/* Weekly Overview Styles */
+.icon-bg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-primary-light {
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.bg-success-light {
+  background-color: rgba(25, 135, 84, 0.1);
+}
+
+.bg-warning-light {
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.bg-info-light {
+  background-color: rgba(13, 202, 240, 0.1);
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-header .d-flex {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  
+  .dashboard-header .date-range {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
