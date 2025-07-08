@@ -131,4 +131,4 @@ const TransactionOverviewsecond = () => {
   );
 };
 
-export default TransactionOverviewsecond;
+export default TransactionOverview;
