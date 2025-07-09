@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard';
 import JobQueueTable from './jobs/jobs';
 import './App.css'; // Make sure you have this CSS file
+import JOBS from './jobs/jobsComplete';
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -20,8 +21,8 @@ const App = () => {
           <div className="content-wrapper">
             <Routes>
               <Route path="/Dashboard" element={<Dashboard />} />
-              <Route path="/jobs" element={<JobQueueTable />} />
-              {/* Add more routes as needed */}
+              <Route path="/jobs" element={<JobQueueTable />} />  
+              <Route path="completed" element={<JOBS />} />
             </Routes>
           </div>
         </div>
