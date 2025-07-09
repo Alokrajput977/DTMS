@@ -379,6 +379,7 @@ body {
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
+  padding-right: 30px;
 }
 
 .size-badge.small {

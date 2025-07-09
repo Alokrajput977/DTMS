@@ -50,7 +50,6 @@ const EquipmentUI = () => {
           </button>
           <div>
             <h2>Equipment Management</h2>
-            <p>Monitor and manage container handling equipment</p>
           </div>
         </div>
       </div>
@@ -108,17 +107,7 @@ const EquipmentUI = () => {
 
 
       <div className="table-container">
-        <div className="table-header">
-          <h3>Container Movements</h3>
-          <div className="table-actions">
-            <button className="export-btn" onClick={() => {}}>
-              Export CSV
-            </button>
-            <button className="refresh-btn" onClick={() => window.location.reload()}>
-              <FiRefreshCw />
-            </button>
-          </div>
-        </div>
+
         
         <div className="table-wrapper">
           <table className="equipment-table">
@@ -141,7 +130,7 @@ const EquipmentUI = () => {
                   <td className="container-no">{item.containerNo}</td>
                   <td>
                     <span className={`size-badge ${item.size === '20' ? 'small' : 'large'}`}>
-                      {item.size}'
+                      {item.size}
                     </span>
                   </td>
                   <td>{item.assigned}</td>

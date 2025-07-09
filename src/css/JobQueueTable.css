@@ -244,9 +244,18 @@
 
 
 .size-badge.size-40 {
-  background-color: #bae6fd;
-  color: #0369a1;
+  font-size: 16px;
+  font-weight: normal;
 }
+
+
+.size-badge.size-20 {
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  align-items: center;
+}
+
 
 /* Status Badges */
 .status-badge {
