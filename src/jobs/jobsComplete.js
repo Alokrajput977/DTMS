@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiSearch, FiRefreshCw, FiChevronRight, FiFilter, FiCalendar, FiArrowLeft } from 'react-icons/fi';
+import { FiSearch, FiRefreshCw, FiChevronRight, FiFilter, FiCalendar } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import '../css/EquipmentUI.css';
 

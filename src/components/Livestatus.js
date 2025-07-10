@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 import './EximGateSystem.css';
+import VisualEvidenceModal from './VisualEvidence';
+
 
 const EximGateSystem = () => {
   const [activeTab, setActiveTab] = useState('inGate');
+  
 
   // Sample data for demonstration
   const containerData = {
@@ -66,6 +69,7 @@ const EximGateSystem = () => {
       }
     ]
   };
+    const [showModal, setShowModal] = useState(false);
 
   const currentData = activeTab === 'inGate' ? containerData.inGate : containerData.outGate;
 
@@ -74,13 +78,13 @@ const EximGateSystem = () => {
       <div className="header">
         <h1>EXIM IN GATE</h1>
         <div className="tab-buttons">
-          <button 
+          <button
             className={`tab-btn ${activeTab === 'inGate' ? 'active in-gate-btn' : 'in-gate-btn'}`}
             onClick={() => setActiveTab('inGate')}
           >
             EXIM IN GATE
           </button>
-          <button 
+          <button
             className={`tab-btn ${activeTab === 'outGate' ? 'active out-gate-btn' : 'out-gate-btn'}`}
             onClick={() => setActiveTab('outGate')}
           >
@@ -123,7 +127,12 @@ const EximGateSystem = () => {
             </div>
 
             <div className="card-row last-row">
-              <div className="row-label facility">Visual Evidence</div>
+              <div
+                className="row-label facility"
+                onClick={() => setShowModal(true)}
+              >
+                Visual Evidence
+              </div>
               <div className="row-value visual-evidence">
                 <FaEye className="eye-icon" /> {container.visualEvidence}
               </div>
@@ -133,6 +142,7 @@ const EximGateSystem = () => {
           </div>
         ))}
       </div>
+      {showModal && <VisualEvidenceModal onClose={() => setShowModal(false)} />}
     </div>
   );
 };

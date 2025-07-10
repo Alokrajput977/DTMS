@@ -50,8 +50,8 @@ body {
 }
 
 .back-btn {
-  background: var(--primary);
-  color: white;
+  background-color: #ede4ff;
+    color: #6a3093;
   border: none;
   width: 40px;
   height: 40px;

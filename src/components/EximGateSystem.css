@@ -9,6 +9,19 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
 }
 
+/* content-area holds header + cards */
+.content-area {
+  transition: filter 0.3s ease;
+}
+
+/* only this area is blurred—sidebar stays sharp */
+.content-area.blurred {
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+}
+
+
 /* Header Styles */
 .header {
     text-align: center;

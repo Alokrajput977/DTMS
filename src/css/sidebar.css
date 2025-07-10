@@ -20,14 +20,15 @@
 
 /* Sidebar Logo */
 .sidebar-logo {
-  width: 200px;
-  height: 80px;
+  width: 100px;  /* previously 200px */
+  height: 100px; /* previously 80px */
   object-fit: contain;
   border-radius: 12px;
   margin: auto;
   display: block;
   transition: all 0.3s ease;
 }
+
 
 .custom-sidebar.closed .sidebar-logo {
   width: 50px;

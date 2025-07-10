@@ -35,10 +35,11 @@ body {
 
 /* Header */
 .app-header {
-  background-color: var(--secondary-color);
-  color: var(--white);
+   background-color: #ede4ff;
+    color: #6a3093;
   padding: 1.5rem 2rem;
   box-shadow: var(--box-shadow);
+  margin-top: 50px;
 }
 
 .app-header h1 {
@@ -134,8 +135,8 @@ body {
 }
 
 .entries-table th {
-  background-color: var(--secondary-color);
-  color: var(--white);
+    background-color: #ede4ff;
+    color: #6a3093;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.85rem;
