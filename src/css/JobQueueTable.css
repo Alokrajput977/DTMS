@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
+  margin-top: 50px;
 }
 
 .title {
@@ -46,7 +47,8 @@
 
 .tabs-container {
   display: flex;
-  background: #e2e8f0;
+  background-color: #ede4ff;
+  color: #6a3093;
   border-radius: 8px;
   padding: 4px;
 }
@@ -59,7 +61,8 @@
   background: transparent;
   font-size: 14px;
   font-weight: 500;
-  color: #64748b;
+  background-color: #ede4ff;
+  color: #6a3093;
   cursor: pointer;
   border-radius: 6px;
   transition: all 0.2s ease;
@@ -67,7 +70,7 @@
 
 .tab-button.active {
   background: white;
-  color: #3b82f6;
+  color: #6a3093;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -103,7 +106,8 @@
   outline: none;
 }
 
-.search-button, .clear-button {
+.search-button,
+.clear-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,11 +116,13 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #64748b;
+  background-color: #ede4ff;
+  color: #6a3093;
   transition: all 0.2s ease;
 }
 
-.search-button:hover, .clear-button:hover {
+.search-button:hover,
+.clear-button:hover {
   color: #3b82f6;
 }
 
@@ -125,7 +131,8 @@
   cursor: not-allowed;
 }
 
-.search-icon, .clear-icon {
+.search-icon,
+.clear-icon {
   width: 18px;
   height: 18px;
 }
@@ -149,8 +156,8 @@
 .job-queue-table th {
   position: sticky;
   top: 0;
-  background: #f1f5f9;
-  color: #64748b;
+  background-color: #ede4ff;
+  color: #6a3093;
   font-weight: 600;
   text-align: left;
   padding: 12px 16px;
@@ -160,9 +167,7 @@
   user-select: none;
 }
 
-.job-queue-table th:hover {
-  background: #e2e8f0;
-}
+
 
 .job-queue-table td {
   padding: 14px 16px;
@@ -297,7 +302,8 @@
   gap: 8px;
 }
 
-.action-button, .view-button {
+.action-button,
+.view-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -475,7 +481,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Error State */
@@ -551,8 +559,15 @@
 }
 
 @keyframes modalFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-header {
@@ -627,7 +642,8 @@
   border-top: 1px solid #f1f5f9;
 }
 
-.modal-action-button, .modal-close-button {
+.modal-action-button,
+.modal-close-button {
   padding: 8px 16px;
   border-radius: 6px;
   font-weight: 500;
@@ -672,22 +688,22 @@
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .search-container {
     width: 100%;
   }
-  
+
   .search-input {
     flex: 1;
     min-width: auto;
   }
-  
+
   .pagination-container {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
   }
-  
+
   .pagination-controls {
     justify-content: center;
   }
@@ -698,20 +714,20 @@
     padding: 16px;
     margin: 10px;
   }
-  
+
   .tabs-container {
     width: 100%;
   }
-  
+
   .tab-button {
     flex: 1;
     justify-content: center;
   }
-  
+
   .modal-container {
     width: 95%;
   }
-  
+
   .detail-row {
     flex-direction: column;
     gap: 4px;
@@ -720,156 +736,159 @@
 
 /* New Reload Button Styles */
 .reload-button {
-    background: none;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 5px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
 .reload-button:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
 .reload-icon {
-    width: 20px;
-    height: 20px;
-    fill: #555;
+  width: 20px;
+  height: 20px;
+  fill: #555;
 }
 
 /* New Enter Button Styles */
 .enter-button {
-    background: none;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 5px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
 .enter-button:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
 .enter-icon {
-    width: 20px;
-    height: 20px;
-    fill: #555;
+  width: 20px;
+  height: 20px;
+  fill: #555;
 }
 
 /* Adjust search container to accommodate new buttons */
 .search-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* Search section styles */
 .search-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .search-buttons {
-    display: flex;
-    gap: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 .search-input-container {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .search-input {
-    padding: 8px 30px 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    width: 250px;
-    transition: border-color 0.3s;
+  padding: 8px 30px 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 250px;
+  transition: border-color 0.3s;
 }
 
 .search-input:focus {
-    outline: none;
-    border-color: #4a90e2;
+  outline: none;
+  border-color: #4a90e2;
 }
 
-.reload-button, .enter-button {
-    background: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
+.reload-button,
+.enter-button {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
 }
 
-.reload-button:hover, .enter-button:hover {
-    background: #e0e0e0;
+.reload-button:hover,
+.enter-button:hover {
+  background: #e0e0e0;
 }
 
-.reload-icon, .enter-icon {
-    width: 20px;
-    height: 20px;
-    fill: #555;
+.reload-icon,
+.enter-icon {
+  width: 20px;
+  height: 20px;
+  fill: #555;
 }
 
 .clear-button {
-    position: absolute;
-    right: 8px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .clear-icon {
-    width: 16px;
-    height: 16px;
-    fill: #999;
+  width: 16px;
+  height: 16px;
+  fill: #999;
 }
 
 .clear-button:hover .clear-icon {
-    fill: #555;
+  fill: #555;
 }
 
 /* Table row clickable */
 .table-row {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .table-row:hover {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 /* Remove action column styles */
 .action-buttons {
-    display: none;
+  display: none;
 }
 
 /* Adjust table header and cells to account for removed columns */
-.job-queue-table th, 
+.job-queue-table th,
 .job-queue-table td {
-    padding: 12px 8px;
+  padding: 12px 8px;
 }
 
 /* Modal adjustments */
 .modal-footer {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }

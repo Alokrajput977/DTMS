@@ -17,6 +17,8 @@ const EquipmentUI = () => {
   const [dateFilter, setDateFilter] = useState('');
   const [activeFilter, setActiveFilter] = useState(null);
 
+  
+
   // Filter data based on user selections
   const filteredData = Array.from({ length: 14 }).map((_, idx) => ({
     id: idx + 1,
@@ -35,6 +37,21 @@ const EquipmentUI = () => {
     return true;
   });
 
+
+      const [activeTab, setActiveTab] = useState('queue');
+      const [pagination, setPagination] = useState({
+          currentPage: 1,
+          totalPages: 1,
+          totalEntries: 0,
+          entriesPerPage: 10
+      });
+
+      const handleClick = () => {
+        setActiveTab('completed');
+        setPagination({ ...pagination, currentPage: 1 });
+        navigate('/completed');
+    };
+
   const handleReset = () => {
     setSelectedEquipment('');
     setSearchTerm('');
@@ -45,11 +62,19 @@ const EquipmentUI = () => {
     <div className="equipment-ui-container">
       <div className="header">
         <div className="header-content">
-          <button className="back-btn" onClick={() => navigate(-1)}>
-            <FiArrowLeft className="back-icon" />
-          </button>
-          <div>
-            <h2>Equipment Management</h2>
+          <div className="tabs-container">
+            <button
+              className={`tab-button ${activeTab === 'queue' ? 'active' : ''}`}
+               onClick={() => navigate(-1)}
+            >
+              Job Queue
+            </button>
+            <button
+              className={`tab-button ${activeTab === 'completed' ? 'active' : ''}`}
+              onClick={handleClick}
+            >
+              Completed
+            </button>
           </div>
         </div>
       </div>
@@ -94,11 +119,11 @@ const EquipmentUI = () => {
             />
           </div>
 
-          <button style={{color:"white"}} className="btn apply-btn" onClick={() => {}}>
+          <button style={{ color: "white" }} className="btn apply-btn" onClick={() => { }}>
             <FiChevronRight className="btn-icon" />
             Apply
           </button>
-          <button style={{color:"white" }} className="btn apply-btn" onClick={handleReset}>
+          <button style={{ color: "white" }} className="btn apply-btn" onClick={handleReset}>
             <FiRefreshCw className="btn-icon" />
             Reset
           </button>
@@ -108,7 +133,7 @@ const EquipmentUI = () => {
 
       <div className="table-container">
 
-        
+
         <div className="table-wrapper">
           <table className="equipment-table">
             <thead>

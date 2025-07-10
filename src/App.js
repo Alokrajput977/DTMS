@@ -7,6 +7,7 @@ import JobQueueTable from './jobs/jobs';
 import './App.css'; // Make sure you have this CSS file
 import JOBS from './jobs/jobsComplete';
 import Exception from './components/Exception';
+import EximDashboard from './components/Livestatus';
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -25,6 +26,7 @@ const App = () => {
               <Route path="/jobs" element={<JobQueueTable />} />  
               <Route path="/completed" element={<JOBS />} />
               <Route path="/Exception" element={<Exception />} />
+              <Route path="/LiveStatus" element={<EximDashboard />} />
             </Routes>
           </div>
         </div>

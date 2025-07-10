@@ -400,7 +400,7 @@ const Dashboard = () => {
                     <GiCargoShip className="text-info" size={24} />
                   </div>
                 </div>
-                <h2 className="bg-${color}  display-8 fw-light mb-0">{weeklyData.eximOutContainer.toLocaleString()}</h2>
+                <h2 className="  display-8 fw-light mb-0">{weeklyData.eximOutContainer.toLocaleString()}</h2>
                 <div className="progress mt-3" style={{ height: '8px' }}>
                   <div
                     className="progress-bar bg-info"
