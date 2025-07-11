@@ -1,0 +1,343 @@
+import React, { useState } from 'react';
+import '../css/Main.css';
+
+const Main = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const [filters, setFilters] = useState({
+    dateRange: '',
+    laneType: '',
+    operationType: '',
+    gateNumber: '',
+    vehicleNumber: '',
+    containerNumber: '',
+    truckNumber: ''
+  });
+
+  const tabs = [
+    'Transaction (IN+OUT)',
+    'Truck Turnaround',
+    'Truck History',
+    'Containers',
+    'In / Out Report'
+  ];
+
+  // Sample data for Transaction table
+  const transactionData = [
+    { id: 1, vehicleNo: 'DLLA83908', inTime: '11-07-2025 08:26:23', inGate: 2, outTime: '11-07-2025 11:12:15', outGate: 3 },
+    { id: 2, vehicleNo: 'DLLV7022', inTime: '11-07-2025 08:16:43', inGate: 2, outTime: '11-07-2025 11:55:09', outGate: 1 },
+    { id: 3, vehicleNo: 'DLLAC5877', inTime: '11-07-2025 08:07:52', inGate: 3, outTime: '11-07-2025 11:21:22', outGate: 3 },
+    { id: 4, vehicleNo: 'DLLLA3231', inTime: '11-07-2025 08:06:59', inGate: 3, outTime: '11-07-2025 12:14:15', outGate: 1 },
+    { id: 5, vehicleNo: 'H87386922', inTime: '11-07-2025 08:06:01', inGate: 5, outTime: '11-07-2025 11:17:44', outGate: 1 },
+    { id: 6, vehicleNo: 'DLQC5892', inTime: '11-07-2025 08:05:19', inGate: 4, outTime: '11-07-2025 10:30:38', outGate: 1 },
+    { id: 7, vehicleNo: 'HBSU2785', inTime: '11-07-2025 08:04:04', inGate: 4, outTime: '11-07-2025 08:55:40', outGate: 3 },
+    { id: 8, vehicleNo: 'HB5577587', inTime: '11-07-2025 07:45:06', inGate: 4, outTime: '11-07-2025 09:06:18', outGate: 1 },
+    { id: 9, vehicleNo: 'HR38483033', inTime: '11-07-2025 07:35:15', inGate: 2, outTime: '11-07-2025 08:14:40', outGate: 3 },
+    { id: 10, vehicleNo: 'HR38993001', inTime: '11-07-2025 07:22:02', inGate: 5, outTime: '11-07-2025 08:54:31', outGate: 1 }
+  ];
+
+  // Sample data for Truck Turnaround table
+  const turnaroundData = [
+    { id: 1, vehicleNo: 'DLLAE1666', inTime: '11-07-2025 07:13:13', inGate: 2, outTime: '11-07-2025 10:26:48', outGate: 3, duration: '193 Minutes' },
+    { id: 2, vehicleNo: 'DLLX7902', inTime: '11-07-2025 08:39:38', inGate: 2, outTime: '11-07-2025 10:14:00', outGate: 3, duration: '94 Minutes' },
+    { id: 3, vehicleNo: 'HBSV8724', inTime: '11-07-2025 08:36:21', inGate: 2, outTime: '11-07-2025 08:11:01', outGate: 1, duration: '74 Minutes' },
+    { id: 4, vehicleNo: 'HR3BA6129', inTime: '11-07-2025 08:54:51', inGate: 3, outTime: '11-07-2025 08:13:29', outGate: 1, duration: '78 Minutes' },
+    { id: 5, vehicleNo: 'DLQC5892', inTime: '11-07-2025 08:05:19', inGate: 4, outTime: '11-07-2025 10:30:38', outGate: 1, duration: '145 Minutes' },
+    { id: 6, vehicleNo: 'HBSU2785', inTime: '11-07-2025 08:04:04', inGate: 4, outTime: '11-07-2025 08:55:40', outGate: 3, duration: '51 Minutes' },
+    { id: 7, vehicleNo: 'HB5577587', inTime: '11-07-2025 07:45:06', inGate: 4, outTime: '11-07-2025 09:06:18', outGate: 1, duration: '81 Minutes' },
+    { id: 8, vehicleNo: 'HR38483033', inTime: '11-07-2025 07:35:15', inGate: 2, outTime: '11-07-2025 08:14:40', outGate: 3, duration: '39 Minutes' },
+    { id: 9, vehicleNo: 'HR38993001', inTime: '11-07-2025 07:22:02', inGate: 5, outTime: '11-07-2025 08:54:31', outGate: 1, duration: '92 Minutes' },
+    { id: 10, vehicleNo: 'DLLA83908', inTime: '11-07-2025 08:26:23', inGate: 2, outTime: '11-07-2025 11:12:15', outGate: 3, duration: '185 Minutes' }
+  ];
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleResetFilters = () => {
+    setFilters({
+      dateRange: '',
+      laneType: '',
+      operationType: '',
+      gateNumber: '',
+      vehicleNumber: '',
+      containerNumber: '',
+      truckNumber: ''
+    });
+  };
+
+  const renderTable = () => {
+    switch(activeTab) {
+      case 0: // Transaction (IN+OUT)
+        return (
+          <div className="data-section">
+            <div className="data-header">
+              <h3>Transaction Records</h3>
+              <div className="data-summary">
+                <div className="in-out-count">
+                  <span>Total Records: <strong>{transactionData.length}</strong></span>
+                </div>
+              </div>
+            </div>
+            <div className="table-container">
+              <table className="data-table">
+                <thead>
+                  <tr>
+                    <th>SN.</th>
+                    <th>VEHICLE NO.</th>
+                    <th>IN TIME</th>
+                    <th>IN GATE NO.</th>
+                    <th>OUT TIME</th>
+                    <th>OUT GATE NO.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {transactionData.map((item, index) => (
+                    <tr key={item.id}>
+                      <td>{index + 1}</td>
+                      <td>{item.vehicleNo}</td>
+                      <td>{item.inTime}</td>
+                      <td>{item.inGate}</td>
+                      <td>{item.outTime}</td>
+                      <td>{item.outGate}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="table-footer">
+              <div className="pagination-controls">
+                <button className="pagination-button" disabled>Previous</button>
+                <span className="page-info">Page 1 of 1</span>
+                <button className="pagination-button" disabled>Next</button>
+              </div>
+            </div>
+          </div>
+        );
+      case 1: // Truck Turnaround
+        return (
+          <div className="data-section">
+            <div className="data-header">
+              <h3>Truck Turnaround Time</h3>
+              <div className="data-summary">
+                <div className="in-out-count">
+                  <span>Total Records: <strong>{turnaroundData.length}</strong></span>
+                </div>
+              </div>
+            </div>
+            <div className="table-container">
+              <table className="data-table">
+                <thead>
+                  <tr>
+                    <th>SN.</th>
+                    <th>VEHICLE NO.</th>
+                    <th>IN TIME</th>
+                    <th>IN GATE NO.</th>
+                    <th>OUT TIME</th>
+                    <th>OUT GATE NO.</th>
+                    <th>TTT (IN MINUTES)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {turnaroundData.map((item, index) => (
+                    <tr key={item.id}>
+                      <td>{index + 1}</td>
+                      <td>{item.vehicleNo}</td>
+                      <td>{item.inTime}</td>
+                      <td>{item.inGate}</td>
+                      <td>{item.outTime}</td>
+                      <td>{item.outGate}</td>
+                      <td>{item.duration}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="table-footer">
+              <div className="pagination-controls">
+                <button className="pagination-button" disabled>Previous</button>
+                <span className="page-info">Page 1 of 1</span>
+                <button className="pagination-button" disabled>Next</button>
+              </div>
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="dashboard-container">
+      <div className="tabs-header">
+        <h2 className="dashboard-title">Terminal Operations Dashboard</h2>
+        <div className="tabs-container">
+          {tabs.map((tab, index) => (
+            <button
+              key={index}
+              className={`tab-button ${activeTab === index ? 'active' : ''}`}
+              onClick={() => setActiveTab(index)}
+            >
+              {tab}
+              {activeTab === index && <span className="tab-indicator"></span>}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="dashboard-content">
+        {activeTab === 0 && (
+          <div className="filter-section">
+            <div className="filter-row">
+              <div className="filter-group">
+                <label>Date Range</label>
+                <div className="date-range-picker">
+                  <input
+                    type="datetime-local"
+                    className="input"
+                    name="startDate"
+                    value={filters.startDate}
+                    onChange={handleFilterChange}
+                  />
+                  <span className="date-separator">to</span>
+                  <input
+                    type="datetime-local"
+                    className="input"
+                    name="endDate"
+                    value={filters.endDate}
+                    onChange={handleFilterChange}
+                  />
+                </div>
+              </div>
+              
+              <div className="filter-group">
+                <label>Lane Type</label>
+                <select
+                  className="select"
+                  name="laneType"
+                  value={filters.laneType}
+                  onChange={handleFilterChange}
+                >
+                  <option value="">All Lanes</option>
+                  <option value="1">Lane 1</option>
+                  <option value="2">Lane 2</option>
+                </select>
+              </div>
+              
+              <div className="filter-group">
+                <label>Operation Type</label>
+                <select
+                  className="select"
+                  name="operationType"
+                  value={filters.operationType}
+                  onChange={handleFilterChange}
+                >
+                  <option value="EXIM">EXIM</option>
+                  <option value="DTMS">DTMS</option>
+                </select>
+              </div>
+              
+              <div className="filter-group">
+                <label>Gate Number</label>
+                <select
+                  className="select"
+                  name="gateNumber"
+                  value={filters.gateNumber}
+                  onChange={handleFilterChange}
+                >
+                  <option value="">All Gates</option>
+                  <option value="1">Gate 1</option>
+                  <option value="2">Gate 2</option>
+                  <option value="3">Gate 3</option>
+                  <option value="4">Gate 4</option>
+                  <option value="5">Gate 5</option>
+                </select>
+              </div>
+            </div>
+            
+            <div className="action-row">
+              <div className="action-group">
+                <button className="action-button primary">
+                  <span className="icon">→</span>
+                  <span className="text">Apply</span>
+                </button>
+                <button className="action-button">
+                  <span className="icon">↓</span>
+                  <span className="text">Download</span>
+                </button>
+                <button className="action-button" onClick={handleResetFilters}>
+                  <span className="icon">⟳</span>
+                  <span className="text">Reset</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 1 && (
+          <div className="filter-section">
+            <div className="filter-row">
+              <div className="filter-group">
+                <label>Start Date</label>
+                <input
+                  type="datetime-local"
+                  className="input"
+                  name="startDate"
+                  value={filters.startDate}
+                  onChange={handleFilterChange}
+                />
+              </div>
+              
+              <div className="filter-group">
+                <label>End Date</label>
+                <input
+                  type="datetime-local"
+                  className="input"
+                  name="endDate"
+                  value={filters.endDate}
+                  onChange={handleFilterChange}
+                />
+              </div>
+              
+              <div className="filter-group">
+                <label>Vehicle Number</label>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Enter vehicle number"
+                  name="vehicleNumber"
+                  value={filters.vehicleNumber}
+                  onChange={handleFilterChange}
+                />
+              </div>
+            </div>
+            
+            <div className="action-row">
+              <div className="action-group">
+                <button className="action-button primary">
+                  <span className="icon">→</span>
+                  <span className="text">Search</span>
+                </button>
+                <button className="action-button">
+                  <span className="icon">↓</span>
+                  <span className="text">Export</span>
+                </button>
+                <button className="action-button" onClick={handleResetFilters}>
+                  <span className="icon">⟳</span>
+                  <span className="text">Reset</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {renderTable()}
+      </div>
+    </div>
+  );
+};
+
+export default Main;

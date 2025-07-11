@@ -9,6 +9,7 @@ import JOBS from './jobs/jobsComplete';
 import Exception from './components/Exception';
 import EximDashboard from './components/Livestatus';
 import GateInEIRReports from './components/EIRReport';
+import Main from './Reports/Main';
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/Exception" element={<Exception />} />
               <Route path="/LiveStatus" element={<EximDashboard />} />
               <Route path="/EIRReport" element={<GateInEIRReports />} />
+               <Route path="/Reports" element={<Main />} />
             </Routes>
           </div>
         </div>
