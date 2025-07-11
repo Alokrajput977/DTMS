@@ -8,6 +8,7 @@ import './App.css'; // Make sure you have this CSS file
 import JOBS from './jobs/jobsComplete';
 import Exception from './components/Exception';
 import EximDashboard from './components/Livestatus';
+import GateInEIRReports from './components/EIRReport';
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -27,6 +28,7 @@ const App = () => {
               <Route path="/completed" element={<JOBS />} />
               <Route path="/Exception" element={<Exception />} />
               <Route path="/LiveStatus" element={<EximDashboard />} />
+              <Route path="/EIRReport" element={<GateInEIRReports />} />
             </Routes>
           </div>
         </div>

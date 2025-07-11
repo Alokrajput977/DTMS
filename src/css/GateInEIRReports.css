@@ -1,0 +1,226 @@
+/* Report Container */
+.report-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin: 0 30px;
+}
+
+/* Header */
+.header-section {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.gate-in-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #6c5ce7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform .2s;
+}
+
+.gate-in-btn:hover {
+    transform: translateY(-2px);
+}
+
+.header-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d3436;
+    margin: 0;
+}
+
+/* Filters container */
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+    margin-top: 60px;
+}
+
+/* Filter groups */
+.filter-group,
+.date-picker-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label,
+.date-picker-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #2d3436;
+}
+
+.filter-group select,
+.filter-group input,
+.date-picker-group input {
+    padding: 8px 12px;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 180px;
+}
+
+.search-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Buttons */
+.reload-btn,
+.apply-btn {
+    background: #00b894;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform .2s;
+    margin-top: 30px;
+}
+
+.apply-btn {
+    background: #6c5ce7;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 24px;
+}
+
+.reload-btn:hover,
+.apply-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Table */
+.table-container {
+    overflow-x: auto;
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* keeps table readable on small screens */
+}
+
+th,
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dfe6e9;
+    text-align: left;
+}
+
+th {
+    background: #e8ddff;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+tr:hover {
+    background: #f1f2f6;
+}
+
+.view-btn {
+    background: #e8ddff;
+    color: #8c57ff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform .1s;
+}
+
+.view-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Pagination */
+.pagination-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.pagination-btn {
+    padding: 6px 12px;
+    border: 1px solid #dfe6e9;
+    background: #fff;
+    color: #0984e3;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.pagination-btn.active {
+    background: #0984e3;
+    color: #fff;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Responsive - Tablet view */
+@media (max-width: 992px) {
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group,
+    .date-picker-group,
+    .search-group {
+        width: 100%;
+    }
+
+    .apply-btn,
+    .reload-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Responsive - Phone view */
+@media (max-width: 576px) {
+    .header-title {
+        font-size: 20px;
+    }
+
+    .filter-group select,
+    .filter-group input,
+    .date-picker-group input {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .reload-btn,
+    .apply-btn {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    table {
+        min-width: 100%; /* still scrollable */
+    }
+
+    .pagination-btn {
+        padding: 6px 8px;
+        font-size: 13px;
+    }
+}
