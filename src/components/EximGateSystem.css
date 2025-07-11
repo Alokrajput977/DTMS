@@ -231,6 +231,11 @@
     .tab-btn {
         width: 100%;
     }
+
+    .facility,
+    .visual-evidence {
+        margin-left: 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -260,6 +265,47 @@
 
     .visual-evidence {
         justify-content: flex-start;
+        margin-left: 0;
+    }
+}
+
+/* ====== ADDED FOR “iPhone SE” (≤375px) ====== */
+@media (max-width: 375px) {
+    /* shrink title and tabs */
+    .header h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        letter-spacing: 0.3px;
+    }
+
+    /* squeeze grid to 1‑col (already set at 480px, but re‑enforce) */
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* even tighter rows */
+    .card-header,
+    .card-row {
+        padding: 8px 12px;
+    }
+    .header-column,
+    .row-label,
+    .row-value,
+    .row-inferred {
+        font-size: 12px;
+        padding: 2px 0;
+        margin: 3px 0;
+    }
+
+    /* shrink buttons */
+    .visual-evidence,
+    .facility {
+        padding: 3px 6px;
+        font-size: 12px;
         margin-left: 0;
     }
 }

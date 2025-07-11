@@ -9,7 +9,7 @@
   left: 0;
   padding: 1rem 0.8rem;
   overflow-x: hidden;
-  transition: width 0.3s ease;
+  transition: transform 0.3s ease, width 0.3s ease;
   z-index: 1000;
   box-shadow: 3px 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -18,17 +18,25 @@
   width: 80px;
 }
 
+.custom-sidebar.mobile {
+  transform: translateX(-100%);
+  width: 250px;
+}
+
+.custom-sidebar.mobile.open {
+  transform: translateX(0);
+}
+
 /* Sidebar Logo */
 .sidebar-logo {
-  width: 100px;  /* previously 200px */
-  height: 100px; /* previously 80px */
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   border-radius: 12px;
   margin: auto;
   display: block;
   transition: all 0.3s ease;
 }
-
 
 .custom-sidebar.closed .sidebar-logo {
   width: 50px;
@@ -87,8 +95,7 @@
   position: fixed;
   top: 50%;
   left: 250px;
-  transform: translateY(-250%);
-  transform: translateX(-50%);
+  transform: translateY(-50%) translateX(-50%);
   background: #0d6efd;
   color: white;
   width: 44px;
@@ -103,8 +110,35 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   font-size: 1.4rem;
 }
-.custom-sidebar.closed + .sidebar-toggle-center {
+
+.sidebar-toggle-center.mobile {
+  left: 20px;
+  top: 20px;
+  transform: none;
+}
+
+.custom-sidebar.closed+.sidebar-toggle-center {
   left: 80px;
+}
+
+.custom-sidebar.mobile+.sidebar-toggle-center {
+  left: 0px;
+  top: 70px;
+}
+
+.custom-sidebar.mobile.open+.sidebar-toggle-center {
+  left: calc(250px - 22px);
+}
+
+/* Sidebar overlay for mobile */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
 /* Transition animation class for cards */
@@ -120,21 +154,29 @@
 }
 
 /* Responsive Fix */
-@media (max-width: 768px) {
-  .custom-sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
+@media (max-width: 991px) {
+  .custom-sidebar:not(.mobile) {
+    width: 80px;
   }
 
-  .custom-sidebar.closed {
-    width: 100%;
+  .custom-sidebar.closed:not(.mobile) {
+    width: 80px;
   }
 
-  .sidebar-toggle-center {
-    left: unset;
-    right: 20px;
-    top: 20px;
+  .sidebar-toggle-center:not(.mobile) {
+    left: 80px;
   }
 }
 
+@media (min-width: 992px) {
+  .custom-sidebar.mobile {
+    transform: translateX(0);
+    width: 250px;
+  }
+
+  .sidebar-toggle-center.mobile {
+    left: 250px;
+    transform: translateY(-50%) translateX(-50%);
+    top: 50%;
+  }
+}

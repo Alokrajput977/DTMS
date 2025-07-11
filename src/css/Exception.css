@@ -35,8 +35,8 @@ body {
 
 /* Header */
 .app-header {
-   background-color: #ede4ff;
-    color: #6a3093;
+  background-color: #ede4ff;
+  color: #6a3093;
   padding: 1.5rem 2rem;
   box-shadow: var(--box-shadow);
   margin-top: 50px;
@@ -135,8 +135,8 @@ body {
 }
 
 .entries-table th {
-    background-color: #ede4ff;
-    color: #6a3093;
+  background-color: #ede4ff;
+  color: #6a3093;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -166,9 +166,6 @@ body {
   padding: 2rem;
   color: var(--gray);
 }
-
-
-
 
 @keyframes spin {
   to {
@@ -211,25 +208,96 @@ body {
   cursor: not-allowed;
 }
 
+/* --------------------
+   Responsive Design
+   -------------------- */
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* 1. Large Tablets / small desktops */
+@media (max-width: 1024px) {
   .app-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
-  
+  .search-box {
+    min-width: 200px;
+  }
+  .entries-table {
+    min-width: 700px;
+  }
+}
+
+/* 2. Tablets and landscape‑phones */
+@media (max-width: 768px) {
   .controls {
     flex-direction: column;
     align-items: stretch;
   }
-  
+  .search-box {
+    width: 100%;
+  }
   .entries-table th,
   .entries-table td {
     padding: 0.75rem 0.5rem;
     font-size: 0.9rem;
   }
-  
   .pagination {
     flex-wrap: wrap;
+  }
+}
+
+/* 3. Portrait‑phones (≤480px) */
+@media (max-width: 480px) {
+  .app-header {
+    padding: 1rem;
+    margin-top: 20px;
+  }
+  .app-header h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .controls {
+    gap: 0.5rem;
+  }
+  .search-box input {
+    padding: 0.5rem 0.75rem 0.5rem 2rem;
+    font-size: 0.9rem;
+  }
+  .filter-buttons button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  .entries-table th,
+  .entries-table td {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  .entries-table {
+    min-width: 100%;
+  }
+  .pagination button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* 4. Extra‑small phones (≤360px, e.g. iPhone SE) */
+@media (max-width: 360px) {
+  .app-header h1 {
+    font-size: 1.2rem;
+  }
+  .search-box input {
+    padding: 0.4rem 0.6rem 0.4rem 1.8rem;
+  }
+  .filter-buttons button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  .entries-table th,
+  .entries-table td {
+    padding: 0.4rem 0.3rem;
+    font-size: 0.75rem;
+  }
+  .pagination button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
   }
 }

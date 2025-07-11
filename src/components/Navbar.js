@@ -40,7 +40,7 @@ const Navbar = () => {
         <div className="d-flex align-items-center">
           <a href="/" className="navbar-brand">
             <i className="bi bi-building me-2"></i>
-            <span className="brand-text">GateSecure</span>
+            <span className="brand-text">Gate</span>
           </a>
         </div>
 
