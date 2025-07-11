@@ -64,6 +64,10 @@ const DashboardCombined = () => {
     { id: 1, inOut: 'IN', gateNo: '4', permitNo: 'ECT2507101900', vehicleNo: 'HR55AK8269', containerNo: 'C25071028', containerSize: 'N/A', damaged: 'N', time: '2025-07-11 13:43:57' },
     { id: 2, inOut: 'IN', gateNo: '3', permitNo: 'EPC250700242', vehicleNo: 'HR85V1570', containerNo: 'SEKU6210615', containerSize: '40', damaged: 'N', time: '2025-07-11 13:42:10' },
     { id: 3, inOut: 'OUT', gateNo: '3', permitNo: 'ECT2507100285', vehicleNo: 'HR55AFB83', containerNo: 'C25071018', containerSize: 'N/A', damaged: 'N', time: '2025-07-11 13:41:55' },
+    { id: 1, inOut: 'IN', gateNo: '4', permitNo: 'ECT2507101900', vehicleNo: 'HR55AK8269', containerNo: 'C25071028', containerSize: 'N/A', damaged: 'N', time: '2025-07-11 13:43:57' },
+    { id: 2, inOut: 'IN', gateNo: '3', permitNo: 'EPC250700242', vehicleNo: 'HR85V1570', containerNo: 'SEKU6210615', containerSize: '40', damaged: 'N', time: '2025-07-11 13:42:10' },
+    { id: 3, inOut: 'OUT', gateNo: '3', permitNo: 'ECT2507100285', vehicleNo: 'HR55AFB83', containerNo: 'C25071018', containerSize: 'N/A', damaged: 'N', time: '2025-07-11 13:41:55' },
+
   ];
 
   const turnaroundData = [
@@ -86,7 +90,13 @@ const DashboardCombined = () => {
 
   const reportData = [
     { id: 1, date: '2025-07-11', totalIn: 25, totalOut: 20 },
-    { id: 2, date: '2025-07-10', totalIn: 30, totalOut: 28 },
+    { id: 2, date: '2025-08-10', totalIn: 31, totalOut: 29 },
+    { id: 3, date: '2025-09-11', totalIn: 15, totalOut: 20 },
+    { id: 4, date: '2025-10-10', totalIn: 60, totalOut: 29 },
+    { id: 5, date: '2025-17-11', totalIn: 65, totalOut: 20 },
+    { id: 6, date: '2025-17-10', totalIn: 70, totalOut: 28 },
+    { id: 7, date: '2025-27-11', totalIn: 35, totalOut: 29 },
+    { id: 8, date: '2025-29-10', totalIn: 20, totalOut: 58 },
     // ... more dummy rows
   ];
 
@@ -241,8 +251,8 @@ const DashboardCombined = () => {
                   <tbody>
                     {transactionData.map((r, i) => (
                       <tr key={r.id}>
-                        <td>{i+1}</td>
-                        <td className={r.inOut==='IN'?'in-cell':'out-cell'}>{r.inOut}</td>
+                        <td>{i + 1}</td>
+                        <td className={r.inOut === 'IN' ? 'in-cell' : 'out-cell'}>{r.inOut}</td>
                         <td>{r.gateNo}</td><td>{r.permitNo}</td><td>{r.vehicleNo}</td>
                         <td>{r.containerNo}</td><td>{r.containerSize}</td><td>{r.damaged}</td><td>{r.time}</td>
                       </tr>
